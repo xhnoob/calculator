@@ -10,6 +10,69 @@ body {
     padding: 20px;
 }
 
+.taiji-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.taiji {
+    width: 100px;
+    height: 100px;
+    background-image: conic-gradient(white 0 50%, black 50% 100%);
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 5s linear infinite;
+}
+
+.taiji::before,
+.taiji::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.taiji::before {
+    background-color: black;
+    top: 0;
+    left: 25px;
+}
+
+.taiji::after {
+    background-color: white;
+    bottom: 0;
+    left: 25px;
+}
+
+.taiji::before::after,
+.taiji::after::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.taiji::before::after {
+    background-color: white;
+    top: 15px;
+    left: 15px;
+}
+
+.taiji::after::after {
+    background-color: black;
+    top: 15px;
+    left: 15px;
+}
+
+#speedSlider {
+    margin-top: 10px;
+    width: 100px;
+}
+
 .calculator {
     background-color: #fff;
     padding: 20px;
@@ -163,4 +226,13 @@ body {
 
 .timestamp-value {
     color: #4CAF50;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
