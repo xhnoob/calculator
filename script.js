@@ -14,7 +14,7 @@ buttons.forEach(button => {
             }
         } else if (value === '=') {
             try {
-                display.innerText = eval(display.innerText.replace(/×/g, '*').replace(/÷/g, '/'));
+                display.innerText = eval(display.innerText.replace(/\u00d7/g, '*').replace(/\u00f7/g, '/'));
             } catch {
                 display.innerText = 'Error';
             }
@@ -65,7 +65,7 @@ function updateRandomNumbers() {
     // 控制更新速度
     setTimeout(() => {
         animationFrameId = requestAnimationFrame(updateRandomNumbers);
-    }, 100); // 添加100ms的延迟使数字变化更容易观察
+    }, 100); // 添加入100ms的延迟使数字变化更容易观察
 }
 
 function getUnixTimestamp() {
@@ -91,3 +91,12 @@ updateRandomNumbers();
 
 // 初始化时间戳显示
 timestampValue.textContent = '--';
+
+// 太极图旋转速度调节
+const taiji = document.getElementById('taiji');
+const speedSlider = document.getElementById('speedSlider');
+
+speedSlider.addEventListener('input', () => {
+    const speed = speedSlider.value;
+    taiji.style.animationDuration = `${11 - speed}s`;
+});
